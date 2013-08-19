@@ -4,12 +4,13 @@ class DogsController < ApplicationController
   end
 
   def create
-    @dog = Dog.new(dog_parameters)
-    if(@dog.save)
-      redirect_to(dogs_path)
-    else
-      render(:new)
-    end
+    @dog = Dog.create(dog_parameters)
+
+    respond_with(@dog)
+  end
+
+  def show
+    @dog = Dog.find(params[:id])
   end
 
   def edit
@@ -18,16 +19,13 @@ class DogsController < ApplicationController
 
   def update
     @dog = Dog.find(params[:id])
-    if (@dog.update_attributes(dog_parameters))
-      redirect_to(dogs_path)
-    else
-      render(:edit)
-    end
+    @dog.update_attributes(dog_parameters)
+    respond_with(@dog)
   end
 
   def destroy
     @dog = Dog.destroy(params[:id])
-    redirect_to(dogs_path)
+    respond_with(@dog)
   end
 
   def index
