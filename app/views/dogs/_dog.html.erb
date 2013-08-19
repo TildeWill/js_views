@@ -1,0 +1,6 @@
+<%= content_tag_for(:tr, dog) do %>
+  <td><%= link_to(dog.name, dog, remote: true) %></td>
+  <td><%= dog.breed %></td>
+  <td><%= link_to("Edit", edit_dog_path(dog), remote: true) %></td>
+  <td><%= link_to("Delete", dog_path(dog), method: :delete) %></td>
+<% end %>

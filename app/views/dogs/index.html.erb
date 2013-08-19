@@ -7,15 +7,11 @@
       <th>Actions</th>
     </tr>
   </thead>
-  <tbody>
-    <% @dogs.each do |dog| %>
-      <tr>
-        <td><%= dog.name %></td>
-        <td><%= dog.breed %></td>
-        <td><%= link_to("Edit", edit_dog_path(dog)) %></td>
-        <td><%= link_to("Delete", dog_path(dog), method: :delete) %></td>
-      </tr>
-    <% end %>
+  <tbody id="dog-list">
+    <%= render(@dogs) %>
   </tbody>
 </table>
-<%= link_to("New Dog", new_dog_path) %>
+<%= link_to("New Dog", new_dog_path, remote: true) %>
+<hr />
+<div id="dog-form"></div>
+<div id="dog-show"></div>
