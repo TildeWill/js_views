@@ -1,4 +1,6 @@
 class DogsController < ApplicationController
+  respond_to :html
+
   def new
     @dog = Dog.new
     render(partial: 'new')
