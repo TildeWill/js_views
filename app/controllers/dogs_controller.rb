@@ -1,4 +1,5 @@
 class DogsController < ApplicationController
+  respond_to :html, :js
   def new
     @dog = Dog.new
   end
