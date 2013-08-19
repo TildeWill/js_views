@@ -1,31 +1,33 @@
 class DogsController < ApplicationController
   def new
     @dog = Dog.new
+    render(partial: 'new')
   end
 
   def create
     @dog = Dog.create(dog_parameters)
-
-    respond_with(@dog)
+    render(partial: 'show')
   end
 
   def show
     @dog = Dog.find(params[:id])
+    render(partial: 'show')
   end
 
   def edit
     @dog = Dog.find(params[:id])
+    render(partial: 'edit')
   end
 
   def update
     @dog = Dog.find(params[:id])
     @dog.update_attributes(dog_parameters)
-    respond_with(@dog)
+    render(partial: 'show')
   end
 
   def destroy
-    @dog = Dog.destroy(params[:id])
-    respond_with(@dog)
+    Dog.destroy(params[:id])
+    render(partial: 'index', locals: {dogs: Dog.all})
   end
 
   def index

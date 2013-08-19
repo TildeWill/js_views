@@ -8,10 +8,10 @@
     </tr>
   </thead>
   <tbody id="dog-list">
-    <%= render(@dogs) %>
+    <%= render(partial: 'dogs/index', locals: {dogs: @dogs}) %>
   </tbody>
 </table>
-<%= link_to("New Dog", new_dog_path, remote: true) %>
+<%= link_to("New Dog", new_dog_path, remote: true, id: "new-dog-link") %>
 <hr />
 <div id="dog-form"></div>
 <div id="dog-show"></div>
